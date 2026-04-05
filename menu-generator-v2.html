@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anivar Menu</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --bg: #F5F3EF;
+    --card: #FFFFFF;
+    --text: #2C2A28;
+    --muted: #8A817C;
+    --accent: #3A312C;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 24px;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    letter-spacing: 6px;
+}
+
+.subtitle {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 6px;
+}
+
+/* Cards */
+.card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 18px;
+    margin-bottom: 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+}
+
+.meal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.meal-title {
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.meal-text {
+    font-size: 18px;
+    margin-top: 6px;
+}
+
+/* Buttons */
+button {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 14px;
+    background: var(--accent);
+    color: white;
+    font-size: 15px;
+    letter-spacing: 1px;
+    margin-top: 24px;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+.mini-btn {
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    color: var(--muted);
+    cursor: pointer;
+}
+
+.mini-btn:active {
+    transform: scale(0.9);
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <div class="logo">Anivar</div>
+    <div class="subtitle">DAILY MENU · FOR TWO</div>
+</div>
+
+<div class="card">
+    <div class="meal-header">
+        <div class="meal-title">Breakfast</div>
+        <button class="mini-btn" onclick="generateBreakfast()">↻</button>
+    </div>
+    <div id="breakfast" class="meal-text"></div>
+</div>
+
+<div class="card">
+    <div class="meal-header">
+        <div class="meal-title">Lunch</div>
+        <button class="mini-btn" onclick="generateLunch()">↻</button>
+    </div>
+    <div id="lunch" class="meal-text"></div>
+</div>
+
+<div class="card">
+    <div class="meal-header">
+        <div class="meal-title">Dinner</div>
+        <button class="mini-btn" onclick="generateDinner()">↻</button>
+    </div>
+    <div id="dinner" class="meal-text"></div>
+</div>
+
+<button onclick="generateMenu()">Generate New Menu</button>
+
+<script>
+// Breakfast options
+const breakfastOptions = [
+    "Poha",
+    "Dosa",
+    "Uttapam",
+    "Besan Cheela",
+    "Moong Dal Cheela",
+    "Sooji Cheela",
+    "Masala Paratha",
+    "Methi Paratha"
+];
+
+// Lunch options
+const lunchOptions = [
+    "Matar Paneer",
+    "Lauki",
+    "Paneer Bhurji",
+    "Palak Paneer",
+    "Bhindi",
+    "Baingan Bharta",
+    "Turai",
+    "Kadhi Chawal",
+    "Rajma Chawal",
+    "Chole Chawal",
+    "Arbi Sabzi",
+    "Gajar Matar",
+    "Aloo Methi",
+    "Jeera Aloo"
+];
+
+// Dinner options (unchanged)
+const dinnerOptions = [
+    "Tehri/Raita",
+    "Sauteed Veggies",
+    "Biryani/Raita",
+    "Paneer Paratha",
+    "Aalo Paratha",
+    "Fried Rice",
+    "Dosa",
+    "Chowmein",
+    "Maggie",
+    "Chilli Paneer",
+    "Pao Bhaji",
+    "Pasta",
+    "Macaroni"
+];
+
+function randomItem(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+}
+
+// Individual generators
+function generateBreakfast() {
+    document.getElementById("breakfast").innerText = randomItem(breakfastOptions);
+}
+
+function generateLunch() {
+    document.getElementById("lunch").innerText = randomItem(lunchOptions);
+}
+
+function generateDinner() {
+    document.getElementById("dinner").innerText = randomItem(dinnerOptions);
+}
+
+// Full generator
+function generateMenu() {
+    generateBreakfast();
+    generateLunch();
+    generateDinner();
+}
+
+// Initial load
+generateMenu();
+</script>
+
+</body>
+</html>
